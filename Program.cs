@@ -8,14 +8,21 @@ Console.WriteLine();
 MooseSays("H I, I'M  E N T H U S I A S T I C !");
 MooseSays("I really am enthusiastic");
 
-bool isTrue = MooseAsks("Is Canada real?");
-if (isTrue)
+// As a question
+CanadaQuestion();
+
+
+void CanadaQuestion()
 {
-    MooseSays("Really? It seems very unlikely.");
-}
-else
-{
-    MooseSays("I  K N E W  I T !!!");
+    bool isTrue = MooseAsks("Is Canada real?");
+    if (isTrue)
+    {
+        MooseSays("Really? It seems very unlikely.");
+    }
+    else
+    {
+        MooseSays("I  K N E W  I T !!!");
+    }
 }
 void MooseSays(string message)
 {
