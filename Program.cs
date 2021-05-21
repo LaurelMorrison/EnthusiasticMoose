@@ -8,15 +8,37 @@ void Main()
     Console.WriteLine("Welcome to the Enthusiastic Moose Simulator!");
     Console.WriteLine("--------------------------------------------");
     Console.WriteLine();
+    AskQuestion();
 
-    // Let the moose speak!
-    MooseSays("H I, I'M  E N T H U S I A S T I C !");
-    MooseSays("I really am enthusiastic");
+    string[] responses =
+    {"As I see it, yes.", "Ask again later.", "Better not tell you now.", "Cannot predict now.", "Concentrate and ask again.", "Don’t count on it.", "It is certain.", "It is decidedly so.", "Most likely.", "My reply is no.", "My sources say no.", "Outlook not so good", "Outlook good.", "Reply hazy, try again.", "Signs point to yes", "Very doubtful.", "Without a doubt.", "Yes.", "Yes – definitely.", "You may rely on it."
+    };
 
+    void AskQuestion()
+    {
+        Console.Write("Ask the moose a question: ");
+        string question = Console.ReadLine();
+        if (string.IsNullOrWhiteSpace(question))
+        {
+            Console.WriteLine("Bye!");
+        }
+        else
+        {
+            // foreach (string response in responses)
+            Random r = new Random();
+            int genRand = r.Next(0, responses.Length - 1);
+            MagicBall(responses[genRand]);
+            // {
+            //     Console.WriteLine("Random response = " + (responses[genRand]));
+            // }
+            AskQuestion();
+        }
+    }
 }
 
 
-void MooseSays(string message)
+
+void MagicBall(string response)
 {
     Console.WriteLine($@"
                                        _.--^^^--,
@@ -35,7 +57,7 @@ void MooseSays(string message)
                '-'    | /       \ |
                       |  .-. .-.  |
                       \ / o| |o \ /
-                       |   / \   |    {message}
+                       |   / \   |    {response}
                       / `^`   `^` \
                      /             \
                     | '._.'         \
@@ -46,46 +68,4 @@ void MooseSays(string message)
                       \ \'._  ` '_.'
                        `^^` `^^^`
     ");
-}
-
-bool MooseAsks(string question)
-{
-    Console.Write($"{question} (Y/N): ");
-    string answer = Console.ReadLine().ToLower();
-
-    while (answer != "y" && answer != "n")
-    {
-        Console.Write($"{question} (Y/N): ");
-        answer = Console.ReadLine().ToLower();
-    }
-
-    if (answer == "y")
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
-
-// Ask a question
-
-MoooseQuestion("Is Canada real?", "Really? It seems very unlikely.", "I  K N E W  I T !!!");
-MoooseQuestion("Are you enthusiastic?", "Yay!", "You should try it!");
-MoooseQuestion("Do you love C# yet?", "Good job sucking up to your instructor!", "You will...oh, yes, you will...");
-MoooseQuestion("Do you want to know a secret?", "ME TOO!!!! I love secrets...tell me one!", "Oh, no...secrets are the best, I love to share them!");
-
-void MoooseQuestion(string question, string TrueResponse, string FalseResonse)
-{
-
-    bool isTrue = MooseAsks(question);
-    if (isTrue)
-    {
-        MooseSays(TrueResponse);
-    }
-    else
-    {
-        MooseSays(FalseResonse);
-    }
 }
