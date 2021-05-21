@@ -25,13 +25,9 @@ void Main()
         }
         else
         {
-            // foreach (string response in responses)
             Random r = new Random();
             int genRand = r.Next(0, responses.Length - 1);
             MagicBall(responses[genRand]);
-            // {
-            //     Console.WriteLine("Random response = " + (responses[genRand]));
-            // }
             AskQuestion();
         }
     }
