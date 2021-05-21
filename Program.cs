@@ -13,26 +13,9 @@ void Main()
     MooseSays("H I, I'M  E N T H U S I A S T I C !");
     MooseSays("I really am enthusiastic");
 
-    // As a question
-    CanadaQuestion();
-    EnthusiasticQuestion();
-    LoveCSharpQuestion();
-    SecretQuestion();
 }
 
 
-void CanadaQuestion()
-{
-    bool isTrue = MooseAsks("Is Canada real?");
-    if (isTrue)
-    {
-        MooseSays("Really? It seems very unlikely.");
-    }
-    else
-    {
-        MooseSays("I  K N E W  I T !!!");
-    }
-}
 void MooseSays(string message)
 {
     Console.WriteLine($@"
@@ -86,41 +69,23 @@ bool MooseAsks(string question)
     }
 }
 
-void EnthusiasticQuestion()
-{
-    bool isEnthusiastic = MooseAsks("Are you enthusiastic?");
-    if (isEnthusiastic)
-    {
-        MooseSays("Yay!");
-    }
-    else
-    {
-        MooseSays("You should try it!");
-    }
-}
+// Ask a question
 
-void LoveCSharpQuestion()
-{
-    bool doesLoveCSharp = MooseAsks("Do you love C# yet?");
-    if (doesLoveCSharp)
-    {
-        MooseSays("Good job sucking up to your instructor!");
-    }
-    else
-    {
-        MooseSays("You will...oh, yes, you will...");
-    }
-}
+MoooseQuestion("Is Canada real?", "Really? It seems very unlikely.", "I  K N E W  I T !!!");
+MoooseQuestion("Are you enthusiastic?", "Yay!", "You should try it!");
+MoooseQuestion("Do you love C# yet?", "Good job sucking up to your instructor!", "You will...oh, yes, you will...");
+MoooseQuestion("Do you want to know a secret?", "ME TOO!!!! I love secrets...tell me one!", "Oh, no...secrets are the best, I love to share them!");
 
-void SecretQuestion()
+void MoooseQuestion(string question, string TrueResponse, string FalseResonse)
 {
-    bool wantsSecret = MooseAsks("Do you want to know a secret?");
-    if (wantsSecret)
+
+    bool isTrue = MooseAsks(question);
+    if (isTrue)
     {
-        MooseSays("ME TOO!!!! I love secrets...tell me one!");
+        MooseSays(TrueResponse);
     }
     else
     {
-        MooseSays("Oh, no...secrets are the best, I love to share them!");
+        MooseSays(FalseResonse);
     }
 }
